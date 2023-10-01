@@ -48,7 +48,7 @@ resource "aws_security_group" "web-sg" {
 }
 
 resource "aws_instance" "test" {
-  ami                    = "ami-0715c1897453cabd1" // OS Ubuntu 20.04
+  ami                    = "ami-053b0d53c279acc90" // OS Ubuntu 20.04
   instance_type          = "t2.micro" //instance type
   vpc_security_group_ids = [aws_security_group.web-sg.id]
   key_name               = "access-key-test-lab-server"
@@ -63,10 +63,6 @@ output "web-address_test_instance_dns" {
 }
 output "web-address_test_instance_ip" {
   value = aws_instance.test.public_ip
-}
-
-output "web-address_ansible_instance" {
-  value = aws_instance.ansible_on_ubuntu.public_dns
 }
 
 data "aws_caller_identity" "current" {}
