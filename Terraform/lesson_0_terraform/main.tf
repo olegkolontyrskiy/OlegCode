@@ -15,8 +15,8 @@ terraform {
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = "key"
-  secret_key = "key"
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
 
 #resource "tls_private_key" "test_key" {
@@ -51,7 +51,7 @@ resource "aws_instance" "test" {
   ami                    = "ami-0715c1897453cabd1" // OS Ubuntu 20.04
   instance_type          = "t2.micro" //instance type
   vpc_security_group_ids = [aws_security_group.web-sg.id]
-  key_name               = "lesson_7_ansible"
+  key_name               = "access-key-test-lab-server"
   tags = {
     Name = "Test insta_Lesson_TF_Ansible"
   }
